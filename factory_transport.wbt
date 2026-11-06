@@ -1,0 +1,1743 @@
+#VRML_SIM R2025a utf8
+
+WorldInfo {
+  title "Smart Industrial Material Transport Robot"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "slippy"
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  fieldOfView 1
+  orientation -0.1771529406050458 0.13582803343493519 0.9747653979128431 1.4782903804251466
+  position -0.7348002616429972 -6.509516655455804 2.7486519397937657
+}
+Background {
+  skyColor [
+    0.8 0.88 0.96
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.5
+  direction 0.3 0.6 -1
+}
+Solid {
+  translation 0 0 -0.05
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.34 0.35 0.34
+        roughness 0.96
+        metalness 0.0
+      }
+      geometry Box {
+        size 6 4 0.1
+      }
+    }
+  ]
+  name "factory_floor"
+  boundingObject Box {
+    size 6 4 0.1
+  }
+}
+Solid {
+  translation 0 2.05 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.35
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 6.2 0.1 0.4
+      }
+    }
+  ]
+  name "wall_north"
+  boundingObject Box {
+    size 6.2 0.1 0.4
+  }
+}
+Solid {
+  translation 0 -2.05 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.35
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 6.2 0.1 0.4
+      }
+    }
+  ]
+  name "wall_south"
+  boundingObject Box {
+    size 6.2 0.1 0.4
+  }
+}
+Solid {
+  translation 3.05 0 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.35
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 4 0.4
+      }
+    }
+  ]
+  name "wall_east"
+  boundingObject Box {
+    size 0.1 4 0.4
+  }
+}
+Solid {
+  translation -3.05 0 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.3 0.3 0.35
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 4 0.4
+      }
+    }
+  ]
+  name "wall_west"
+  boundingObject Box {
+    size 0.1 4 0.4
+  }
+}
+
+# --- Four structural steel columns, each physically meeting a roof-frame corner ---
+# Columns reach from the factory floor (z=0) into the roof beams; wider connector
+# plates make each of the four joints clearly visible from the simulation viewpoint.
+Solid { translation -2.82 1.82 1.325 children [ Shape { appearance PBRAppearance { baseColor 0.20 0.22 0.24 roughness 0.78 metalness 0.55 } geometry Box { size 0.16 0.16 2.65 } } ] name "ceiling_support_column_front_left" }
+Solid { translation 2.82 1.82 1.325 children [ Shape { appearance PBRAppearance { baseColor 0.20 0.22 0.24 roughness 0.78 metalness 0.55 } geometry Box { size 0.16 0.16 2.65 } } ] name "ceiling_support_column_front_right" }
+Solid { translation -2.82 -1.82 1.325 children [ Shape { appearance PBRAppearance { baseColor 0.20 0.22 0.24 roughness 0.78 metalness 0.55 } geometry Box { size 0.16 0.16 2.65 } } ] name "ceiling_support_column_back_left" }
+Solid { translation 2.82 -1.82 1.325 children [ Shape { appearance PBRAppearance { baseColor 0.20 0.22 0.24 roughness 0.78 metalness 0.55 } geometry Box { size 0.16 0.16 2.65 } } ] name "ceiling_support_column_back_right" }
+# Visible steel joint blocks bridge the top of each column into the perimeter frame.
+Solid { translation -2.82 1.82 2.635 children [ Shape { appearance PBRAppearance { baseColor 0.24 0.26 0.28 roughness 0.72 metalness 0.62 } geometry Box { size 0.26 0.26 0.16 } } ] name "ceiling_joint_front_left" }
+Solid { translation 2.82 1.82 2.635 children [ Shape { appearance PBRAppearance { baseColor 0.24 0.26 0.28 roughness 0.72 metalness 0.62 } geometry Box { size 0.26 0.26 0.16 } } ] name "ceiling_joint_front_right" }
+Solid { translation -2.82 -1.82 2.635 children [ Shape { appearance PBRAppearance { baseColor 0.24 0.26 0.28 roughness 0.72 metalness 0.62 } geometry Box { size 0.26 0.26 0.16 } } ] name "ceiling_joint_back_left" }
+Solid { translation 2.82 -1.82 2.635 children [ Shape { appearance PBRAppearance { baseColor 0.24 0.26 0.28 roughness 0.72 metalness 0.62 } geometry Box { size 0.26 0.26 0.16 } } ] name "ceiling_joint_back_right" }
+
+# --- Industrial ceiling: steel trusses and overhead LED fixtures (open-frame for visibility) ---
+Solid { translation 0 0 2.65 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.20 roughness 0.72 metalness 0.55 } geometry Box { size 6.0 0.09 0.09 } } ] name "ceiling_main_beam_front" }
+Solid { translation 0 1.25 2.65 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.20 roughness 0.72 metalness 0.55 } geometry Box { size 6.0 0.09 0.09 } } ] name "ceiling_main_beam_mid" }
+Solid { translation 0 -1.25 2.65 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.20 roughness 0.72 metalness 0.55 } geometry Box { size 6.0 0.09 0.09 } } ] name "ceiling_main_beam_back" }
+Solid { translation -2.6 0 2.65 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.20 roughness 0.72 metalness 0.55 } geometry Box { size 0.09 4.0 0.09 } } ] name "ceiling_cross_beam_left" }
+Solid { translation 0 0 2.65 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.20 roughness 0.72 metalness 0.55 } geometry Box { size 0.09 4.0 0.09 } } ] name "ceiling_cross_beam_center" }
+Solid { translation 2.6 0 2.65 children [ Shape { appearance PBRAppearance { baseColor 0.16 0.18 0.20 roughness 0.72 metalness 0.55 } geometry Box { size 0.09 4.0 0.09 } } ] name "ceiling_cross_beam_right" }
+Solid { translation -1.35 0.35 2.57 children [ Shape { appearance PBRAppearance { baseColor 0.88 0.91 0.94 emissiveColor 0.55 0.58 0.60 roughness 0.35 metalness 0.0 } geometry Box { size 1.0 0.22 0.025 } } ] name "overhead_led_panel_left" }
+Solid { translation 1.35 0.35 2.57 children [ Shape { appearance PBRAppearance { baseColor 0.88 0.91 0.94 emissiveColor 0.55 0.58 0.60 roughness 0.35 metalness 0.0 } geometry Box { size 1.0 0.22 0.025 } } ] name "overhead_led_panel_right" }
+
+DEF PICKUP_STATION Solid {
+  translation -1.5 0 0.005
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.1 0.75 0.2
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.7 0.7 0.01
+      }
+    }
+    Pose {
+      translation -0.3 0.3 0.25
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.75 0.2
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.06 0.06 0.5
+          }
+        }
+      ]
+    }
+  ]
+  name "pickup_station"
+}
+DEF DELIVERY_STATION Solid {
+  translation 2 0 0.005
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.15 0.35 0.95
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.7 0.7 0.01
+      }
+    }
+    Pose {
+      translation 0.3 0.3 0.25
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.15 0.35 0.95
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.06 0.06 0.5
+          }
+        }
+      ]
+    }
+  ]
+  name "delivery_station"
+}
+DEF OBSTACLE Solid {
+  translation 0.3 0 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.4 0.05
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.4 0.4 0.5
+      }
+    }
+  ]
+  name "obstacle"
+  boundingObject Box {
+    size 0.4 0.4 0.5
+  }
+}
+DEF CARGO_BOX Solid {
+  translation -1.7 -0.2 0.08
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.38 0.15
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.14 0.14 0.14
+      }
+    }
+  ]
+  name "cargo_box_1"
+}
+DEF CARGO_BOX_2 Solid {
+  translation -1.5 -0.2 0.08
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.38 0.15
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.14 0.14 0.14
+      }
+    }
+  ]
+  name "cargo_box_2"
+}
+DEF CARGO_BOX_3 Solid {
+  translation -1.3 -0.2 0.08
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.6 0.38 0.15
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.14 0.14 0.14
+      }
+    }
+  ]
+  name "cargo_box_3"
+}
+
+
+# Industrial concrete slab joints (subtle grey seams, not road lane markings)
+Solid {
+  translation -2.0 0 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 0.008 3.85 0.002 } } ]
+  name "concrete_joint_vertical_0"
+}
+Solid {
+  translation -1.0 0 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 0.008 3.85 0.002 } } ]
+  name "concrete_joint_vertical_1"
+}
+Solid {
+  translation 0.0 0 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 0.008 3.85 0.002 } } ]
+  name "concrete_joint_vertical_2"
+}
+Solid {
+  translation 1.0 0 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 0.008 3.85 0.002 } } ]
+  name "concrete_joint_vertical_3"
+}
+Solid {
+  translation 2.0 0 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 0.008 3.85 0.002 } } ]
+  name "concrete_joint_vertical_4"
+}
+Solid {
+  translation 0 -1.5 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 5.85 0.008 0.002 } } ]
+  name "concrete_joint_horizontal_0"
+}
+Solid {
+  translation 0 -0.75 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 5.85 0.008 0.002 } } ]
+  name "concrete_joint_horizontal_1"
+}
+Solid {
+  translation 0 0.0 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 5.85 0.008 0.002 } } ]
+  name "concrete_joint_horizontal_2"
+}
+Solid {
+  translation 0 0.75 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 5.85 0.008 0.002 } } ]
+  name "concrete_joint_horizontal_3"
+}
+Solid {
+  translation 0 1.5 0.002
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.26 0.25 roughness 1 metalness 0 } geometry Box { size 5.85 0.008 0.002 } } ]
+  name "concrete_joint_horizontal_4"
+}
+
+# --- Added visual environment: floor safety markings, storage racks, and signs ---
+
+
+Solid {
+  translation -2.75 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_0"
+}
+Solid {
+  translation -2.36 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_1"
+}
+Solid {
+  translation -1.97 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_2"
+}
+Solid {
+  translation -1.58 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_3"
+}
+Solid {
+  translation -1.19 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_4"
+}
+Solid {
+  translation -0.7999999999999998 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_5"
+}
+Solid {
+  translation -0.41000000000000014 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_6"
+}
+Solid {
+  translation -0.020000000000000018 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_7"
+}
+Solid {
+  translation 0.3700000000000001 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_8"
+}
+Solid {
+  translation 0.7600000000000002 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_9"
+}
+Solid {
+  translation 1.1500000000000004 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_10"
+}
+Solid {
+  translation 1.54 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_11"
+}
+Solid {
+  translation 1.9299999999999997 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_12"
+}
+Solid {
+  translation 2.3200000000000003 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_13"
+}
+Solid {
+  translation 2.71 1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "north_safety_stripe_14"
+}
+Solid {
+  translation -2.75 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_0"
+}
+Solid {
+  translation -2.36 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_1"
+}
+Solid {
+  translation -1.97 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_2"
+}
+Solid {
+  translation -1.58 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_3"
+}
+Solid {
+  translation -1.19 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_4"
+}
+Solid {
+  translation -0.7999999999999998 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_5"
+}
+Solid {
+  translation -0.41000000000000014 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_6"
+}
+Solid {
+  translation -0.020000000000000018 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_7"
+}
+Solid {
+  translation 0.3700000000000001 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_8"
+}
+Solid {
+  translation 0.7600000000000002 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_9"
+}
+Solid {
+  translation 1.1500000000000004 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_10"
+}
+Solid {
+  translation 1.54 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_11"
+}
+Solid {
+  translation 1.9299999999999997 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_12"
+}
+Solid {
+  translation 2.3200000000000003 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.08 0.08 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_13"
+}
+Solid {
+  translation 2.71 -1.78 0.007
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1.0 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.07 0.008 }
+    }
+  ]
+  name "south_safety_stripe_14"
+}
+Solid {
+  translation -1.83 1.16 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_0_post_0_0"
+}
+Solid {
+  translation -1.83 1.5999999999999999 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_0_post_0_1"
+}
+Solid {
+  translation -0.8700000000000001 1.16 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_0_post_1_0"
+}
+Solid {
+  translation -0.8700000000000001 1.5999999999999999 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_0_post_1_1"
+}
+Solid {
+  translation -1.35 1.38 0.22
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_0_beam_0"
+}
+Solid {
+  translation -1.35 1.38 0.58
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_0_beam_1"
+}
+Solid {
+  translation -1.35 1.38 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_0_beam_2"
+}
+Solid {
+  translation -1.6 1.38 0.36
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.58 0.36 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.26 0.25 }
+    }
+  ]
+  name "storage_carton_north_0_0"
+}
+Solid {
+  translation -1.2000000000000002 1.38 0.36
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.58 0.36 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.26 0.25 }
+    }
+  ]
+  name "storage_carton_north_0_1"
+}
+Solid {
+  translation -0.48 1.16 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_1_post_0_0"
+}
+Solid {
+  translation -0.48 1.5999999999999999 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_1_post_0_1"
+}
+Solid {
+  translation 0.48 1.16 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_1_post_1_0"
+}
+Solid {
+  translation 0.48 1.5999999999999999 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_1_post_1_1"
+}
+Solid {
+  translation 0.0 1.38 0.22
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_1_beam_0"
+}
+Solid {
+  translation 0.0 1.38 0.58
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_1_beam_1"
+}
+Solid {
+  translation 0.0 1.38 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_1_beam_2"
+}
+Solid {
+  translation -0.25 1.38 0.36
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.58 0.36 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.26 0.25 }
+    }
+  ]
+  name "storage_carton_north_1_0"
+}
+Solid {
+  translation 0.15 1.38 0.36
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.58 0.36 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.26 0.25 }
+    }
+  ]
+  name "storage_carton_north_1_1"
+}
+Solid {
+  translation 0.8700000000000001 1.16 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_2_post_0_0"
+}
+Solid {
+  translation 0.8700000000000001 1.5999999999999999 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_2_post_0_1"
+}
+Solid {
+  translation 1.83 1.16 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_2_post_1_0"
+}
+Solid {
+  translation 1.83 1.5999999999999999 0.48
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.22 0.27
+        roughness 0.35
+        metalness 0.65
+      }
+      geometry Box { size 0.045 0.045 0.96 }
+    }
+  ]
+  name "rack_north_2_post_1_1"
+}
+Solid {
+  translation 1.35 1.38 0.22
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_2_beam_0"
+}
+Solid {
+  translation 1.35 1.38 0.58
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_2_beam_1"
+}
+Solid {
+  translation 1.35 1.38 0.9
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.32 0.04
+        roughness 0.45
+        metalness 0.25
+      }
+      geometry Box { size 1.0 0.48 0.045 }
+    }
+  ]
+  name "rack_north_2_beam_2"
+}
+Solid {
+  translation 1.1 1.38 0.36
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.58 0.36 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.26 0.25 }
+    }
+  ]
+  name "storage_carton_north_2_0"
+}
+Solid {
+  translation 1.5 1.38 0.36
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.58 0.36 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.28 0.26 0.25 }
+    }
+  ]
+  name "storage_carton_north_2_1"
+}
+Solid {
+  translation -2.35 1.985 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.05 0.55 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.42 0.025 0.22 }
+    }
+  ]
+  name "wall_safety_sign_0"
+}
+Solid {
+  translation -1.55 1.985 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.9 0.12 0.08
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.42 0.025 0.22 }
+    }
+  ]
+  name "wall_safety_sign_1"
+}
+Solid {
+  translation -0.75 1.985 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.42 0.025 0.22 }
+    }
+  ]
+  name "wall_safety_sign_2"
+}
+Solid {
+  translation 0.85 1.985 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.05 0.3 0.8
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.42 0.025 0.22 }
+    }
+  ]
+  name "wall_safety_sign_3"
+}
+Solid {
+  translation 1.65 1.985 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.72 0.02
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.42 0.025 0.22 }
+    }
+  ]
+  name "wall_safety_sign_4"
+}
+Solid {
+  translation 2.45 1.985 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.05 0.55 0.16
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.42 0.025 0.22 }
+    }
+  ]
+  name "wall_safety_sign_5"
+}
+Solid {
+  translation -2.35 1.968 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.96 0.96 0.92
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.12 0.008 0.045 }
+    }
+  ]
+  name "wall_sign_symbol_0"
+}
+Solid {
+  translation -1.55 1.968 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.96 0.96 0.92
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.12 0.008 0.045 }
+    }
+  ]
+  name "wall_sign_symbol_1"
+}
+Solid {
+  translation -0.75 1.968 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.96 0.96 0.92
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.12 0.008 0.045 }
+    }
+  ]
+  name "wall_sign_symbol_2"
+}
+Solid {
+  translation 0.85 1.968 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.96 0.96 0.92
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.12 0.008 0.045 }
+    }
+  ]
+  name "wall_sign_symbol_3"
+}
+Solid {
+  translation 1.65 1.968 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.96 0.96 0.92
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.12 0.008 0.045 }
+    }
+  ]
+  name "wall_sign_symbol_4"
+}
+Solid {
+  translation 2.45 1.968 0.31
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.96 0.96 0.92
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.12 0.008 0.045 }
+    }
+  ]
+  name "wall_sign_symbol_5"
+}
+Solid {
+  translation -2.985 0.95 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.05 0.65 0.2
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.018 0.42 0.2 }
+    }
+  ]
+  name "emergency_exit_sign_left"
+}
+Solid {
+  translation 2.985 -0.95 0.3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.05 0.65 0.2
+        roughness 0.8
+        metalness 0.0
+      }
+      geometry Box { size 0.018 0.42 0.2 }
+    }
+  ]
+  name "emergency_exit_sign_right"
+}
+
+DEF TRANSPORT_ROBOT Robot {
+  translation 1.9251141487267505 0.02505750303180749 0.04903539880597017
+  rotation -2.3435537822802205e-16 -1.8124551812293704e-16 -1 0.3228859889510748
+  children [
+    Pose {
+      translation 0 0 0.04
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.95 0.8 0.1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.3 0.2 0.08
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 0 0 0.09
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.25
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.2 0.16 0.02
+          }
+        }
+      ]
+    }
+
+    # Robotic arm mounted on the mobile platform. Joint motors can be
+    # controlled from the material_transport controller.
+    Pose {
+      translation 0 0 0.105
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.18 0.22 0.28
+            metalness 0.65
+            roughness 0.35
+          }
+          geometry Cylinder {
+            radius 0.055
+            height 0.035
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0 0 0.125
+      }
+      device [
+        RotationalMotor {
+          name "arm_base_motor"
+          minPosition -2.8
+          maxPosition 2.8
+          maxVelocity 1.5
+          maxTorque 20
+        }
+        PositionSensor { name "arm_base_sensor" }
+      ]
+      endPoint Solid {
+        translation 0 0 0.125
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.85 0.35 0.12
+              metalness 0.35
+              roughness 0.4
+            }
+            geometry Cylinder {
+              radius 0.035
+              height 0.08
+            }
+          }
+          Pose {
+            translation 0 0 0.075
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.25 0.3 0.36
+                  metalness 0.6
+                  roughness 0.35
+                }
+                geometry Box { size 0.075 0.075 0.04 }
+              }
+            ]
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 1 0
+              anchor 0 0 0.075
+            }
+            device [
+              RotationalMotor {
+                name "arm_shoulder_motor"
+                minPosition -1.4
+                maxPosition 1.4
+                maxVelocity 1.2
+                maxTorque 12
+              }
+              PositionSensor { name "arm_shoulder_sensor" }
+            ]
+            endPoint Solid {
+              translation 0.09 0 0.075
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.95 0.55 0.16
+                    metalness 0.45
+                    roughness 0.35
+                  }
+                  geometry Box { size 0.19 0.045 0.045 }
+                }
+                Pose {
+                  translation 0.105 0 0
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.22 0.25 0.3
+                        metalness 0.65
+                        roughness 0.3
+                      }
+                      geometry Sphere { radius 0.03 }
+                    }
+                  ]
+                }
+                Pose {
+                  translation 0.205 0 0
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.16 0.18 0.2
+                        metalness 0.6
+                        roughness 0.3
+                      }
+                      geometry Box { size 0.045 0.09 0.025 }
+                    }
+                    Pose {
+                      translation 0.03 0.035 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance { baseColor 0.9 0.2 0.12 }
+                          geometry Box { size 0.07 0.012 0.02 }
+                        }
+                      ]
+                    }
+                    Pose {
+                      translation 0.03 -0.035 0
+                      children [
+                        Shape {
+                          appearance PBRAppearance { baseColor 0.9 0.2 0.12 }
+                          geometry Box { size 0.07 0.012 0.02 }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+              name "arm_upper_link"
+              boundingObject Box { size 0.19 0.045 0.045 }
+              physics Physics { density -1 mass 0.35 }
+            }
+          }
+        ]
+        name "arm_turret"
+        boundingObject Cylinder { radius 0.04 height 0.08 }
+        physics Physics { density -1 mass 0.25 }
+      }
+    }
+    
+    DistanceSensor {
+      translation 0.16 0 0.04
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9 0.1 0.1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.02 0.03 0.02
+          }
+        }
+      ]
+      name "ds_center"
+      lookupTable [
+        0 0 0
+        1 1 0
+      ]
+    }
+    DistanceSensor {
+      translation 0.15 0.08 0.04
+      rotation 0 0 1 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9 0.1 0.1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.02 0.03 0.02
+          }
+        }
+      ]
+      name "ds_left"
+      lookupTable [
+        0 0 0
+        1 1 0
+      ]
+    }
+    DistanceSensor {
+      translation 0.15 -0.08 0.04
+      rotation 0 0 1 -0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.9 0.1 0.1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.02 0.03 0.02
+          }
+        }
+      ]
+      name "ds_right"
+      lookupTable [
+        0 0 0
+        1 1 0
+      ]
+    }
+    Solid {
+      translation 0.12 0 -0.03
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.7 0.7 0.7
+            roughness 1
+            metalness 0
+          }
+          geometry Sphere {
+            radius 0.02
+          }
+        }
+      ]
+      name "front_caster"
+      contactMaterial "slippy"
+      boundingObject Sphere {
+        radius 0.02
+      }
+      physics Physics {
+        density -1
+        mass 0.05
+      }
+    }
+    Solid {
+      translation -0.12 0 -0.03
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.7 0.7 0.7
+            roughness 1
+            metalness 0
+          }
+          geometry Sphere {
+            radius 0.02
+          }
+        }
+      ]
+      name "rear_caster"
+      contactMaterial "slippy"
+      boundingObject Sphere {
+        radius 0.02
+      }
+      physics Physics {
+        density -1
+        mass 0.05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 455.67459020372377
+        axis 0 1 0
+        anchor 0 0.15 0
+      }
+      device [
+        RotationalMotor {
+          name "left_motor"
+          maxVelocity 12
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.15 0
+        rotation 0 1 0 3.2852480867935405
+        children [
+          Transform {
+            scale 1 0.4 1
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0.1 0.1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Sphere {
+                  radius 0.05
+                  subdivision 3
+                }
+              }
+            ]
+          }
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.09 0.05 0.012
+            }
+          }
+        ]
+        name "left_wheel"
+        boundingObject Sphere {
+          radius 0.05
+        }
+        physics Physics {
+          density -1
+          mass 0.4
+        }
+        linearVelocity -2.4571374798332772e-17 2.98497990794259e-17 7.174636670753437e-17
+        angularVelocity -5.797035095188902e-16 -5.127210057516182e-16 -7.078456631615381e-16
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 375.1571248020949
+        axis 0 1 0
+        anchor 0 -0.15 0
+      }
+      device [
+        RotationalMotor {
+          name "right_motor"
+          maxVelocity 12
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.15 0
+        rotation 0 -1 -3.249797980887982e-17 1.8339936286802736
+        children [
+          Transform {
+            scale 1 0.4 1
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0.1 0.1
+                  roughness 1
+                  metalness 0
+                }
+                geometry Sphere {
+                  radius 0.05
+                  subdivision 3
+                }
+              }
+            ]
+          }
+          Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.09 0.05 0.012
+            }
+          }
+        ]
+        name "right_wheel"
+        boundingObject Sphere {
+          radius 0.05
+        }
+        physics Physics {
+          density -1
+          mass 0.4
+        }
+        linearVelocity -3.5320914249842535e-17 1.9480170297591257e-17 1.4343016105806875e-16
+        angularVelocity -4.2847650619978314e-16 -7.117778725776045e-16 6.793100991054458e-16
+      }
+    }
+  ]
+  name "transport_robot"
+  boundingObject Pose {
+    translation 0 0 0.04
+    children [
+      Box {
+        size 0.3 0.2 0.08
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 4
+  }
+  controller "material_transport"
+  supervisor TRUE
+  linearVelocity -5.217266032972623e-17 3.564223734414327e-17 -2.7728497005272207e-16
+  angularVelocity -5.920666525628229e-16 -1.0017658840074977e-15 -9.59685244302164e-18
+}
